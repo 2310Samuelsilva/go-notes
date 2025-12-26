@@ -22,6 +22,7 @@ jobs:
 
     - name: Instalar dependências
       run: |
+        cd go-notes
         go mod tidy
         go get ./...
 
