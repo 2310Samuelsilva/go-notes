@@ -45,6 +45,7 @@ jobs:
     name: Deploy para Servidor
     needs: build-and-test
     runs-on: ubuntu-latest
+    environment: so-production
 
     steps:
       - name: Deploy via SSH
