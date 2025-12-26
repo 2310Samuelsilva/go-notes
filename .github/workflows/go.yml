@@ -27,16 +27,13 @@ jobs:
 
     - name: Instalar dependências do Go
       run: |
-        cd go-notes   # entrar na pasta se o go.mod estiver aqui
         go mod tidy
         go get ./...
 
     - name: Compilar aplicação
       run: |
-        cd go-notes
         go build -o go-notes-app .
 
     - name: Executar testes
       run: |
-        cd go-notes
         go test ./...
