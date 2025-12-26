@@ -35,7 +35,7 @@ export SERVER_PORT=:8080
 export DB_HOST=localhost
 export DB_PORT=5432
 export DB_USER=db_user
-export DB_PASSWORD=db_password
+export DB_PASSWORD=admin123
 export DB_NAME=app_db
 export DB_SSLMODE=disable
 ```
