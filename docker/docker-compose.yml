@@ -31,7 +31,7 @@ services:
     image: caddy:2-alpine
     container_name: go-notes-caddy
     volumes:
-      - ../Caddyfile_docker:/etc/caddy/Caddyfile
+      - /home/appuser/go-notes/Caddyfile_docker:/etc/caddy/Caddyfile
       - ../website:/srv/www/go-notes/website
     ports:
       - "${HTTP_PORT}:80"
