@@ -4,6 +4,7 @@ services:
   db:
     image: postgres:15-alpine
     container_name: go-notes-db
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -13,23 +14,27 @@ services:
       - ./db-init:/docker-entrypoint-initdb.d
     ports:
       - "${DB_PORT}:${DB_PORT}"
-
-      
+    networks:
+      - go-notes-net
 
   go-notes-app:
     image: go-notes-app:latest
     container_name: go-notes-app
+    restart: unless-stopped
     env_file:
       - ./.env
     depends_on:
       - db
     ports:
-        - "${APP_PORT}:${APP_PORT}"
+      - "${APP_PORT}:${APP_PORT}"
     command: ["./go-notes-app"]
+    networks:
+      - go-notes-net
 
   caddy:
     image: caddy:2-alpine
     container_name: go-notes-caddy
+    restart: unless-stopped
     volumes:
       - /home/appuser/go-notes/Caddyfile_docker:/etc/caddy/Caddyfile
       - ../website:/srv/www/go-notes/website
@@ -38,6 +43,12 @@ services:
       - "${HTTPS_PORT}:443"
     depends_on:
       - go-notes-app
+    networks:
+      - go-notes-net
 
 volumes:
   db_data:
+
+networks:
+  go-notes-net:
+    driver: bridge
