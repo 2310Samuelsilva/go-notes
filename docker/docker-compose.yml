@@ -17,7 +17,7 @@ services:
       
 
   app:
-    build: .
+    image: go-notes:latest
     container_name: go-notes-app
     env_file:
       - ./.env
