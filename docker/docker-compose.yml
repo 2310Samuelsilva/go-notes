@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
     ports:
-      - "${SERVER_PORT}:${SERVER_PORT}"
+      - "${SERVER_PORT#*:}:${SERVER_PORT#*:}"
     command: ["./go-notes-app"]
 
   caddy:
