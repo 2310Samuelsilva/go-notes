@@ -1,0 +1,22 @@
+{
+    log {
+        output file /var/log/caddy/caddy.log
+        format json
+        level INFO
+    }
+}
+
+:80 {
+
+    root * /srv/www/go-notes/website
+    file_server
+
+    route /app* {
+        reverse_proxy go-notes-app:8080
+    }
+
+    log {
+        output file /var/log/caddy/go-notes.log
+        format json
+    }
+}
