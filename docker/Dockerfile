@@ -1,5 +1,5 @@
 # Stage 1: build
-FROM golang:1.21-alpine AS builder
+FROM golang:1.24-alpine AS builder AS builder
 WORKDIR /app
 
 # Copiar go.mod e go.sum primeiro para cache de dependências
