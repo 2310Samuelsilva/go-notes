@@ -15,6 +15,13 @@
         reverse_proxy go-notes-app:8080
     }
 
+    route /db-admin* {
+        basicauth {
+            admin $2a$14$DrSbC9hxiO3oxMIJrPjck.VbXvmFLgjdRsTfjsWJTHGBCxd9HluFS
+        }
+        reverse_proxy adminer:8080
+    }
+
     log {
         output file /var/log/caddy/go-notes.log
         format json

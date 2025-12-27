@@ -47,6 +47,15 @@ services:
       - go-notes-app
     networks:
       - go-notes-net
+      
+  adminer:
+    image: adminer:latest
+    container_name: go-notes-adminer
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - go-notes-net
 
 volumes:
   db_data:
