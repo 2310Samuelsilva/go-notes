@@ -11,7 +11,6 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/session"
 	"github.com/gofiber/template/html/v2"
 )
-
 //go:embed templates/*
 var resources embed.FS
 
